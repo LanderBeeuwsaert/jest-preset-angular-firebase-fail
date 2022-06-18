@@ -7,6 +7,17 @@ import { AboutComponent } from './about.component';
 
 let fixture: ComponentFixture<AboutComponent>;
 
+import firebase from 'firebase/compat/app';
+import firestore = firebase.firestore;
+
+
+describe('test firestore use in jest', () => {
+  it(`test firestore use in jest`, () => {
+    let test = firestore().doc('/test').get();
+  });
+});
+
+
 describe('AboutComponent (highlightDirective)', () => {
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
@@ -17,6 +28,8 @@ describe('AboutComponent (highlightDirective)', () => {
   });
 
   it('should have skyblue <h2>', () => {
+
+
     const h2: HTMLElement = fixture.nativeElement.querySelector('h2');
     const bgColor = h2.style.backgroundColor;
     expect(bgColor).toBe('skyblue');
